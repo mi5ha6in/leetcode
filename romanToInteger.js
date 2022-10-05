@@ -18,13 +18,12 @@ function romanToInt(s) {
 
   let result = 0;
 
-  for (let i = s.length - 1; i >= 0; i--) {
+  for (let i = 0; i < s.length; i++) {
     let currentNum = s[i];
-    let prevNum = s[i - 1];
+    let nextNum = s[i + 1];
 
-    if (romanMapInteger[prevNum] < romanMapInteger[currentNum]) {
-      result += romanMapInteger[currentNum] - romanMapInteger[prevNum];
-      i--;
+    if (romanMapInteger[currentNum] < romanMapInteger[nextNum]) {
+      result -= romanMapInteger[currentNum];
     } else {
       result += romanMapInteger[currentNum];
     }
