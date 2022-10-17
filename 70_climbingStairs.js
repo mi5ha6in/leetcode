@@ -1,16 +1,20 @@
 /**
+ * https://leetcode.com/problems/climbing-stairs
  * @param {number} n
  * @return {number}
  */
-var climbStairs = function (n) {
-  let counts = [1, 1, 2];
+function climbStairs(n) {
+  let prev = 1;
+  let current = 1;
 
-  for (let i = 3; i <= n; i++) {
-    counts.push(counts[i - 1] + counts[i - 2]);
+  for (let i = 0; i < n - 1; i++) {
+    const temp = current;
+    current = current + prev;
+    prev = temp;
   }
 
-  return counts[n];
-};
+  return current;
+}
 
 console.log(climbStairs(2)); // 2
 console.log(climbStairs(3)); // 3
