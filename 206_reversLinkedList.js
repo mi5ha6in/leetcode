@@ -38,3 +38,25 @@ console.log(reverseList(list1));
 //   val: 3,
 //   next: ListNode { val: 2, next: ListNode { val: 1, next: null } }
 // }
+
+function reverseListRecursive(head) {
+  if (!head) {
+    return null;
+  }
+
+  let newHead = head;
+
+  if (head.next) {
+    newHead = reverseListRecursive(head.next);
+    head.next.next = head;
+  }
+  head.next = null;
+
+  return newHead;
+}
+
+console.log(reverseListRecursive(list1));
+// ListNode {
+//   val: 3,
+//   next: ListNode { val: 2, next: ListNode { val: 1, next: null } }
+// }
